@@ -23,42 +23,43 @@
     </div>
 
     <script>
-        // Создания туннеля с сервером
-        const socket = io('http://localhost:5000');
+    const socket = io('http://localhost:5000');
 
+    document.getElementById('createGame').onclick = function() {
+        socket.emit('create_game');
+    };
 
-        document.getElementById('createGame').onclick = function() {   // Передача сообщений серверу
-            socket.emit('create_game');
-        };
+    socket.on('game_created', function(data) {
+        const link = window.location.origin + '/game/' + data.game_id;
+        window.location.href = link; // Переход на страницу игры
+    });
 
+    document.getElementById('findGame').onclick = function() {
+        console.log('Запрос на поиск игры отправлен');
+        socket.emit('find_game');
+    };
 
-        // Создания ссылки для игры
-        socket.on('game_created', function(data) {
-            const link = window.location.origin + '/game/' + data.game_id;
-            window.location.href = link; // Переход на страницу игры
-        });
+    socket.on('game_found', function(data) {
+        console.log('Игра найдена:', data);
+        if (data.game_id) {
+            // Подключаемся к найденной игре
+            socket.emit('join_game', data.game_id); // Убедитесь, что у вас есть обработчик для этого события на сервере
+            window.location.href = window.location.origin + '/game/' + data.game_id; // Переход на страницу игры
+        } else {
+            alert('Игр нет');
+        }
+    });
 
-
-        document.getElementById('findGame').onclick = function() {
-            console.log('Запрос на поиск игры отправлен'); // Отладочное сообщение
-            socket.emit('find_game');
-        };
-
-        // Обработка найденной игры
-        socket.on('game_found', function(data) {
-            console.log('Игра найдена:', data); // Отладочное сообщение
-            if (data.game_id) {
-                const link = window.location.origin + '/game/' + data.game_id;
-                window.location.href = link; // Переход на страницу игры
-            } else {
-                alert('Игр нет'); // Если игр нет
-            }
-        });
-
+    socket.on('game_start', function(data) {
+        alert(data.message);
+        // Здесь можно обновить интерфейс для начала игры
+        // Переход на страницу игры
+        const gameId = data.game_id; // Получите game_id из данных
+        window.location.href = window.location.origin + '/game/' + gameId; // Переход на страницу игры
+    });
 
     </script>
 
-    </script>
 
 </body>
 </html>
