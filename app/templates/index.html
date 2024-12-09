@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Морской бой</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Морской бой</h1>
+        <div id="game-controls">
+            <button id="createGame">Создать игру</button>
+            <button id="findGame">Найти игру</button>
+        </div>
+        <div id="gameLink" style="display: none; margin-top: 20px;">
+            <p>Ссылка на игру: <a id="link" href="#" target="_blank"></a></p>
+        </div>
+
+
+    </div>
+
+    <script>
+        // Создания туннеля с сервером
+        const socket = io('http://localhost:5000');
+
+
+        document.getElementById('createGame').onclick = function() {   // Передача сообщений серверу
+            socket.emit('create_game');
+        };
+
+
+        // Создания ссылки для игры
+        socket.on('game_created', function(data) {
+            const link = window.location.origin + '/game/' + data.game_id;
+            window.location.href = link; // Переход на страницу игры
+        });
+
+
+        document.getElementById('findGame').onclick = function() {
+            console.log('Запрос на поиск игры отправлен'); // Отладочное сообщение
+            socket.emit('find_game');
+        };
+
+        // Обработка найденной игры
+        socket.on('game_found', function(data) {
+            console.log('Игра найдена:', data); // Отладочное сообщение
+            if (data.game_id) {
+                const link = window.location.origin + '/game/' + data.game_id;
+                window.location.href = link; // Переход на страницу игры
+            } else {
+                alert('Игр нет'); // Если игр нет
+            }
+        });
+
+
+    </script>
+
+    </script>
+
+</body>
+</html>

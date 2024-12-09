@@ -1,0 +1,103 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 400px;
+    margin: 250px auto auto auto;
+    text-align: center;
+    padding: 50px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin-bottom: 30px;
+}
+
+button {
+    padding: 15px 25px;
+    margin: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+// Стили игры
+
+.main{
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.boat-container{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(12, 116, 81);
+    height: 25vh;
+}
+
+.boat-container div{
+
+    border-right: 1px solid black;
+}
+
+
+.border {
+    color: white;
+    justify-content: center;
+    display: grid;
+    gap: 3px;
+    grid-template-rows: repeat(11, 30px);
+    text-align: center;
+    vertical-align: center;
+}
+
+.columns{
+    background-color: cadetblue;
+    border: 1px solid black;
+}
+
+.columns-kill{
+    background-color: rgb(252, 0, 0);
+    border: 1px solid black;
+}
+
+.columns-set{
+    background-color: rgb(255, 255, 255);
+    border: 1px solid black;
+}
+
+.columns:hover{
+    background-color: rgb(19, 14, 94);
+    border: 1px solid black;
+}
+
+
+
+.rows {
+    gap: 3px;
+    display: grid;
+    grid-template-columns: repeat(12, 30px);
+}
+
+.text{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 350px;
+    padding-left: 350px;
+}
