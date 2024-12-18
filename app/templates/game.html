@@ -3,308 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Морской бой</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <div class="boat-container">
-        <div class="you-boat"></div>
-        <div class="enemy-boat"></div>
-    </div>
-    
-    <div class="main">
-        <div class="border">
-            <div class="rows">
-                <div class="columns"></div>
-                <div class="columns">A</div>
-                <div class="columns">B</div>
-                <div class="columns">C</div>
-                <div class="columns">D</div>
-                <div class="columns">E</div>
-                <div class="columns">F</div>
-                <div class="columns">G</div>
-                <div class="columns">H</div>
-                <div class="columns">I</div>
-                <div class="columns">J</div>
-            </div>
-            <div class="rows">
-                <div class="columns">1</div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns-kill"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-            </div>
-            <div class="rows">
-                <div class="columns">2</div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-            </div>
-            <div class="rows">
-                <div class="columns">3</div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-            </div>
-            <div class="rows">
-                <div class="columns">4</div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-            </div>
-            <div class="rows">
-                <div class="columns">5</div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-            </div>
-            <div class="rows">
-                <div class="columns">6</div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-            </div>
-            <div class="rows">
-                <div class="columns">7</div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-            </div>
-            <div class="rows">
-                <div class="columns">8</div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-            </div>
-            <div class="rows">
-                <div class="columns">9</div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-            </div>
-            <div class="rows">
-                <div class="columns">10</div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-            </div>
+        <div class="container">
+        <h1>Морской бой</h1>
+       <div class="boat-container">
+            <div class="boat" id="boat1" draggable="true" ondragstart="drag(event)" data-size="1" data-name="Корабль 1" style="width: 30px;">Корабль 1 (1)</div>
+            <div class="boat" id="boat2" draggable="true" ondragstart="drag(event)" data-size="2" data-name="Корабль 2" style="width: 60px;">Корабль 2 (2)</div>
+            <div class="boat" id="boat3" draggable="true" ondragstart="drag(event)" data-size="3" data-name="Корабль 3" style="width: 90px;">Корабль 3 (3)</div>
+            <div class="boat" id="boat4" draggable="true" ondragstart="drag(event)" data-size="4" data-name="Корабль 4" style="width: 120px;">Корабль 4 (4)</div>
+            <div class="boat" id="boat5" draggable="true" ondragstart="drag(event)" data-size="5" data-name="Корабль 5" style="width: 150px;">Корабль 5 (5)</div>
         </div>
 
-        <div class="border">
-            <div class="rows">
-                <div class="columns"></div>
-                <div class="columns">A</div>
-                <div class="columns">B</div>
-                <div class="columns">C</div>
-                <div class="columns">D</div>
-                <div class="columns">E</div>
-                <div class="columns">F</div>
-                <div class="columns">G</div>
-                <div class="columns">H</div>
-                <div class="columns">I</div>
-                <div class="columns">J</div>
+        <div class="main">
+            <div class="boat-container-you">
+                <div class="rows">
+                    <div class="columns"></div>
+                    {% for column in columns %}
+                    <div class="columns">{{ column }}</div>
+                    {% endfor %}
+                </div>
+                <!-- Генерация строк с номерами -->
+                {% for row in rows %}
+                <div class="rows">
+                    <div class="columns">{{ row }}</div>
+                    {% for _ in columns %}
+                    <div class="columns" ondragover="allowDrop(event)" ondrop="drop(event)"></div>
+                    {% endfor %}
+                </div>
+                {% endfor %}
             </div>
-            <div class="rows">
-                <div class="columns">1</div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-            </div>
-            <div class="rows">
-                <div class="columns">2</div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-            </div>
-            <div class="rows">
-                <div class="columns">3</div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-            </div>
-            <div class="rows">
-                <div class="columns">4</div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-            </div>
-            <div class="rows">
-                <div class="columns">5</div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-            </div>
-            <div class="rows">
-                <div class="columns">6</div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-            </div>
-            <div class="rows">
-                <div class="columns">7</div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-            </div>
-            <div class="rows">
-                <div class="columns">8</div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-            </div>
-            <div class="rows">
-                <div class="columns">9</div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-            </div>
-            <div class="rows">
-                <div class="columns">10</div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
-                <div class="columns"></div>
+
+            <div class="boat-container-enemy">
+                <div class="rows">
+                    <div class="columns"></div>
+                    {% for column in columns %}
+                    <div class="columns">{{ column }}</div>
+                    {% endfor %}
+                </div>
+                <!-- Генерация строк с номерами -->
+                {% for row in rows %}
+                <div class="rows">
+                    <div class="columns">{{ row }}</div>
+                    {% for _ in columns %}
+                    <div class="columns"></div>
+                    {% endfor %}
+                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
-
 </body>
+
+
+<script>
+    let isHorizontal = true; // Переменная для отслеживания ориентации корабля
+
+    function drag(event) {
+        event.dataTransfer.setData("text/plain", event.target.dataset.name);
+        event.dataTransfer.setData("size", event.target.dataset.size);
+        event.dataTransfer.setData("elementId", event.target.id); // Сохраняем ID элемента
+    }
+
+    function allowDrop(event) {
+        event.preventDefault(); // Позволяет сбросить элемент
+    }
+
+    function drop(event) {
+        event.preventDefault();
+
+        const boatSize = parseInt(event.dataTransfer.getData("size"));
+        const boatId = event.dataTransfer.getData("elementId"); // Получаем ID элемента
+
+        // Получаем ячейку, на которую был сброшен корабль
+        const cell = event.target;
+        const cellIndex = Array.from(cell.parentNode.children).indexOf(cell);
+        const rowIndex = Array.from(cell.parentNode.parentNode.children).indexOf(cell.parentNode);
+
+        // Проверяем, можно ли разместить корабль
+        if (canPlaceBoat(rowIndex, cellIndex, boatSize)) {
+            // Размещаем корабль
+            for (let i = 0; i < boatSize; i++) {
+                const targetCell = isHorizontal
+                    ? cell.parentNode.children[cellIndex + i]
+                    : cell.parentNode.parentNode.children[rowIndex + i].children[cellIndex];
+
+                targetCell.classList.add('occupied'); // Добавляем класс для занятых ячеек
+                targetCell.style.backgroundColor = '#00bfff'; // Изменяем цвет ячейки
+            }
+
+            // Удаляем корабль из контейнера
+            const boatElement = document.getElementById(boatId);
+            boatElement.parentNode.removeChild(boatElement);
+
+            // Окрашиваем границы вокруг размещенного корабля
+            markSurroundingCells(rowIndex, cellIndex, boatSize);
+        } else {
+            alert('Нельзя разместить корабль здесь!');
+        }
+    }
+
+    function canPlaceBoat(rowIndex, cellIndex, size) {
+        // Проверяем, можно ли разместить корабль
+        for (let i = 0; i < size; i++) {
+            const targetCell = isHorizontal
+                ? document.querySelector(`.boat-container-you .rows:nth-child(${rowIndex + 1}) .columns:nth-child(${cellIndex + i + 1})`)
+                : document.querySelector(`.boat-container-you .rows:nth-child(${rowIndex + i + 1}) .columns:nth-child(${cellIndex + 1})`);
+
+            if (!targetCell || targetCell.classList.contains('occupied')) {
+                return false; // Если ячейка занята или не существует, возвращаем false
+            }
+        }
+        // Проверяем радиус вокруг размещаемого корабля
+        for (let i = -1; i <= size; i++) {
+            for (let j = -1; j <= 1; j++) {
+                const checkCell = document.querySelector(`.boat-container-you .rows:nth-child(${rowIndex + j + 1}) .columns:nth-child(${cellIndex + i + 1})`);
+                if (checkCell && checkCell.classList.contains('occupied')) {
+                    return false; // Если ячейка занята, возвращаем false
+                }
+            }
+        }
+        return true; // Если все ячейки свободны, возвращаем true
+    }
+
+    function markSurroundingCells(rowIndex, cellIndex, size) {
+        // Окрашиваем границы вокруг размещенного корабля
+        for (let i = -1; i <= size; i++) {
+            for (let j = -1; j <= 1; j++) {
+                const surroundingCell = document.querySelector(`.boat-container-you .rows:nth-child(${rowIndex + j + 1}) .columns:nth-child(${cellIndex + i + 1})`);
+                if (surroundingCell && !surroundingCell.classList.contains('occupied')) {
+                    surroundingCell.style.backgroundColor = '#6c757d'; // Цвет для незанятых ячеек
+                }
+            }
+        }
+    }
+
+function toggleOrientation(event) {
+    const boatElement = event.currentTarget;
+    const currentSize = parseInt(boatElement.dataset.size);
+
+    // Переключаем ориентацию
+    isHorizontal = !isHorizontal;
+
+    // Изменяем стиль корабля в зависимости от ориентации
+    if (isHorizontal) {
+        boatElement.style.width = `${currentSize * 50}px`; // Устанавливаем ширину в зависимости от размера
+        boatElement.style.height = '30px'; // Высота для горизонтального положения
+        boatElement.style.transform = 'none'; // Убираем поворот
+    } else {
+        boatElement.style.width = '30px'; // Ширина для вертикального положения
+        boatElement.style.height = `${currentSize * 50}px`; // Высота в зависимости от размера
+        boatElement.style.transform = 'none'; // Убираем поворот
+    }
+}
+    // Добавляем обработчик события для клика на корабль
+    document.querySelectorAll('.boat').forEach(boat => {
+        boat.addEventListener('click', toggleOrientation);
+    });
+</script>
+
+
 </html>

@@ -1,93 +1,93 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    font-family: 'Roboto', sans-serif; /* Используем Google Font */
+    background-color: #e9ecef; /* Светлый фон */
     margin: 0;
     padding: 20px;
 }
 
 .container {
-    max-width: 400px;
-    margin: 250px auto auto auto;
+    max-width: 900px; /* Увеличиваем ширину контейнера */
+    margin: 0 auto; /* Центрируем контейнер */
     text-align: center;
-    padding: 50px;
+    padding: 40px;
     background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px; /* Более округлые углы */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-    margin-bottom: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #343a40; /* Темный цвет заголовка */
 }
 
 button {
-    padding: 15px 25px;
+    padding: 15px 30px;
     margin: 10px;
-    font-size: 16px;
+    font-size: 18px; /* Увеличиваем размер шрифта */
     cursor: pointer;
     border: none;
     border-radius: 5px;
     background-color: #007bff;
     color: white;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s; /* Добавляем эффект трансформации */
 }
 
 button:hover {
     background-color: #0056b3;
+    transform: scale(1.05); /* Увеличиваем кнопку при наведении */
 }
 
-
-// Стили игры
-
-.main{
+.main {
+    padding-left: 30px;
     margin-top: 30px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between; /* Центрируем содержимое */
 }
 
-.boat-container{
+.boat-container {
     display: flex;
     justify-content: center;
-    background-color: rgb(12, 116, 81);
-    height: 25vh;
-}
-
-.boat-container div{
-
-    border-right: 1px solid black;
+    background-color: #0c7451; /* Более насыщенный цвет */
+    height: 30vh; /* Увеличиваем высоту контейнера для лодок */
+    align-items: center; /* Центрируем по вертикали */
 }
 
 
-.border {
+.boat-container-you {
     color: white;
-    justify-content: center;
     display: grid;
     gap: 3px;
     grid-template-rows: repeat(11, 30px);
     text-align: center;
-    vertical-align: center;
 }
 
-.columns{
-    background-color: cadetblue;
+.boat-container-enemy {
+    color: white;
+    display: grid;
+    gap: 3px;
+    grid-template-rows: repeat(11, 30px);
+    text-align: center;
+}
+
+
+.columns {
+    background-color: #6c757d; /* Более современный цвет */
     border: 1px solid black;
+    transition: background-color 0.3s; /* Плавный переход цвета */
 }
 
-.columns-kill{
-    background-color: rgb(252, 0, 0);
-    border: 1px solid black;
+.columns-kill {
+    background-color: #dc3545; /* Красный цвет для убитых */
 }
 
-.columns-set{
-    background-color: rgb(255, 255, 255);
-    border: 1px solid black;
+.columns-set {
+    background-color: #ffffff; /* Белый цвет для установленных */
 }
 
-.columns:hover{
-    background-color: rgb(19, 14, 94);
-    border: 1px solid black;
+.columns:hover {
+    background-color: #343a40; /* Темный цвет при наведении */
 }
-
-
 
 .rows {
     gap: 3px;
@@ -95,9 +95,23 @@ button:hover {
     grid-template-columns: repeat(12, 30px);
 }
 
-.text{
+.text {
     display: flex;
     justify-content: space-between;
-    padding-right: 350px;
-    padding-left: 350px;
+    padding: 0 50px; /* Уменьшаем отступы */
+}
+
+
+.boat {
+    background-color: #007bff; /* Цвет корабля */
+    color: white; /* Цвет текста */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: 7px;
+}
+
+.occupied {
+    background-color: #00bfff; /* Цвет для занятых ячеек */
 }
