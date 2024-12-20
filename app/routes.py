@@ -3,7 +3,7 @@ from flask import render_template, request
 from flask_socketio import emit
 import uuid
 import random
-from app.model import Player, Room
+from app.model import Player, Room, Boat
 
 
 @app.route('/')
@@ -64,3 +64,27 @@ def find_game():
     else:
         print('Игры не найдены')  # Отладочное сообщение
         emit('game_found', {'game_id': None}, broadcast=False)  # Если игр нет
+
+
+@socketio.on('place_boat')
+def place_boat(data):
+    game_id = data['game_id']
+    player_id = data['player_id']
+    row_index = data['row_index']
+    cell_index = data['cell_index']
+    boat_size = data['boat_size']
+    is_horizontal = data['is_horizontal']
+
+    # Сохраняем информацию о корабле в базе данных
+    new_boat = Boat(player_id=player_id, room_id=game_id, row_index=row_index, cell_index=cell_index, size=boat_size, is_horizontal=is_horizontal)
+    db.session.add(new_boat)
+    db.session.commit()
+
+    # Отправляем обновление всем игрокам в комнате
+    emit('boat_placed', {
+        'player_id': player_id,
+        'row_index': row_index,
+        'cell_index': cell_index,
+        'boat_size': boat_size,
+        'is_horizontal': is_horizontal
+    }, room=game_id)
