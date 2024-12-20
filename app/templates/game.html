@@ -58,8 +58,9 @@
     </div>
 </body>
 
-
+<script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
 <script>
+    const socket = io(); // Подключение к серверу WebSocket
     let isHorizontal = true; // Переменная для отслеживания ориентации корабля
 
     function drag(event) {
@@ -72,39 +73,49 @@
         event.preventDefault(); // Позволяет сбросить элемент
     }
 
-    function drop(event) {
-        event.preventDefault();
+   function drop(event) {
+    event.preventDefault();
 
-        const boatSize = parseInt(event.dataTransfer.getData("size"));
-        const boatId = event.dataTransfer.getData("elementId"); // Получаем ID элемента
+    const boatSize = parseInt(event.dataTransfer.getData("size"));
+    const boatId = event.dataTransfer.getData("elementId"); // Получаем ID элемента
 
-        // Получаем ячейку, на которую был сброшен корабль
-        const cell = event.target;
-        const cellIndex = Array.from(cell.parentNode.children).indexOf(cell);
-        const rowIndex = Array.from(cell.parentNode.parentNode.children).indexOf(cell.parentNode);
+    // Получаем ячейку, на которую был сброшен корабль
+    const cell = event.target;
+    const cellIndex = Array.from(cell.parentNode.children).indexOf(cell);
+    const rowIndex = Array.from(cell.parentNode.parentNode.children).indexOf(cell.parentNode);
 
-        // Проверяем, можно ли разместить корабль
-        if (canPlaceBoat(rowIndex, cellIndex, boatSize)) {
-            // Размещаем корабль
-            for (let i = 0; i < boatSize; i++) {
-                const targetCell = isHorizontal
-                    ? cell.parentNode.children[cellIndex + i]
-                    : cell.parentNode.parentNode.children[rowIndex + i].children[cellIndex];
+    // Проверяем, можно ли разместить корабль
+    if (canPlaceBoat(rowIndex, cellIndex, boatSize)) {
+        // Размещаем корабль
+        for (let i = 0; i < boatSize; i++) {
+            const targetCell = isHorizontal
+                ? cell.parentNode.children[cellIndex + i]
+                : cell.parentNode.parentNode.children[rowIndex + i].children[cellIndex];
 
-                targetCell.classList.add('occupied'); // Добавляем класс для занятых ячеек
-                targetCell.style.backgroundColor = '#00bfff'; // Изменяем цвет ячейки
-            }
-
-            // Удаляем корабль из контейнера
-            const boatElement = document.getElementById(boatId);
-            boatElement.parentNode.removeChild(boatElement);
-
-            // Окрашиваем границы вокруг размещенного корабля
-            markSurroundingCells(rowIndex, cellIndex, boatSize);
-        } else {
-            alert('Нельзя разместить корабль здесь!');
+            targetCell.classList.add('occupied'); // Добавляем класс для занятых ячеек
+            targetCell.style.backgroundColor = '#00bfff'; // Изменяем цвет ячейки
         }
+
+        // Удаляем корабль из контейнера
+        const boatElement = document.getElementById(boatId);
+        boatElement.parentNode.removeChild(boatElement);
+
+        // Окрашиваем границы вокруг размещенного корабля
+        markSurroundingCells(rowIndex, cellIndex, boatSize);
+
+        // Отправляем данные о размещении корабля на сервер
+        socket.emit('place_boat', {
+            game_id: 'your_game_id', // Замените на актуальный ID игры
+            player_id: 'your_player_id', // Замените на актуальный ID игрока
+            row_index: rowIndex,
+            cell_index: cellIndex,
+            boat_size: boatSize,
+            is_horizontal: isHorizontal
+        });
+    } else {
+        alert('Нельзя разместить корабль здесь!');
     }
+}
 
     function canPlaceBoat(rowIndex, cellIndex, size) {
         // Проверяем, можно ли разместить корабль

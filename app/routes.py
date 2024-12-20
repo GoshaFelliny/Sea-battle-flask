@@ -76,7 +76,14 @@ def place_boat(data):
     is_horizontal = data['is_horizontal']
 
     # Сохраняем информацию о корабле в базе данных
-    new_boat = Boat(player_id=player_id, room_id=game_id, row_index=row_index, cell_index=cell_index, size=boat_size, is_horizontal=is_horizontal)
+    new_boat = Boat(
+        player_id=player_id,
+        room_id=game_id,
+        row_index=row_index,
+        cell_index=cell_index,
+        size=boat_size,
+        is_horizontal=is_horizontal
+    )
     db.session.add(new_boat)
     db.session.commit()
 
